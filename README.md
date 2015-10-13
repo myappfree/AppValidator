@@ -4,7 +4,7 @@
 
 First of all import the library in your gradle file.
 ```java
-compile 'com.myappfree.sdk:appvalidator:1.0.4'
+compile 'com.myappfree.sdk:appvalidator:1.0.5'
 ```
 
 #### Do the trick!
