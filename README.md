@@ -16,7 +16,7 @@ Add this code to your MainActivity and add in the *validated() block* your logic
             public void validated() {
                 // ADD YOUR UNLOCK LOGIC HERE
                 //...........
-                AppValidator.showDialog(MainActivity.this,"YOUR-CUSTOM-MESSAGE");
+                AppValidator.showDialog(MainActivity.this,"You have unlocked a special content for free by using myAppFree");
             }
         });
 ```
