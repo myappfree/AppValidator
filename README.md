@@ -36,5 +36,5 @@ Add this line before *isIapToUnlock* method.
      AppValidator.DEBUG = true;
 ```
 
-Note: this will raise the *validated() block* every time your app is opened. Remove this line before release your app to the store.
+Note: this will raise the *validated() block* every time your app is opened. Remove this line before releasing your app to the store.
 
