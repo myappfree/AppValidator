@@ -11,6 +11,8 @@ compile 'com.myappfree.sdk:appvalidator:1.0.5'
 AAR plugin support has been added in 5.0b19 version.
 Just drop an .aar file into any folder of Unity project, it should be detected as Android-only plugin, and enjoy.
 
+Download the .aar file from here: http://jcenter.bintray.com/com/myappfree/sdk/appvalidator/1.0.5/
+
 #### Do the trick!
 
 Add this code to your MainActivity and add in the *validated() block* your logic to unlock your content.
