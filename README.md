@@ -1,11 +1,15 @@
 # AppValidator
 
-#### Import library
+#### Import library (Gradle)
 
 First of all import the library in your gradle file.
 ```java
 compile 'com.myappfree.sdk:appvalidator:1.0.5'
 ```
+#### Import library (Unity)
+
+AAR plugin support has been added in 5.0b19 version.
+Just drop an .aar file into any folder of Unity project, it should be detected as Android-only plugin, and enjoy.
 
 #### Do the trick!
 
