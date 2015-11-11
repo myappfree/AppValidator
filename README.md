@@ -11,7 +11,7 @@ compile 'com.myappfree.sdk:appvalidator:1.0.5'
 - Download this repository
 - in Eclipse select File -> Import
 - Select Android -> Existing Android Code Into Workspace -> Next
-- Click Browse... near Root Directory and select directory path/to/AppValidator/eclise
+- Click 'Browse...' in Root Directory and select directory path/to/AppValidator/eclise
 - Click Finish
 - Right-click on the imported project in Package Explorer
 - Click Properties -> Android
