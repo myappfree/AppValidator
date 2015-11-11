@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class test : MonoBehaviour
+public class appvalidator : MonoBehaviour
 {
 
     AndroidJavaClass unity;
@@ -40,9 +40,8 @@ public class test : MonoBehaviour
 
         void validated()
         {
-            AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject curActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
-            curActivity.Call("showDialog", "App Validated!");
+            // WRITE YORU VALIDATED CODE HERE
+
         }
     }
 }
