@@ -35,6 +35,6 @@ Add this line before *isIapToUnlock* method.
 Note: this will raise the *validated() block* every time your app is opened. Remove this line before releasing your app to the store.
 
 Instructions for other frameworks/platforms:
-- [Eclipse](eclise/README.md)
-- [Cordova/Ionic](cordova/README.md)
-- [Unity](unity/README.md)
+- [Eclipse](blob/master/eclipse/README.md)
+- [Cordova/Ionic](blob/master/cordova/README.md)
+- [Unity](blob/master/unity/README.md)
