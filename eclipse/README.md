@@ -1,11 +1,17 @@
-# AppValidator
+#### Import library (Eclipse)
+- Download this repository
+- in Eclipse select File -> Import
+- Select Android -> Existing Android Code Into Workspace -> Next
+- Click 'Browse...' in Root Directory and select directory path/to/AppValidator/eclise
+- Click Finish
+- Right-click on the imported project in Package Explorer
+- Click Properties -> Android
+- Check Is Library under Library section -> click Ok
+- Right-click on your project in Package Explorer
+- Select Properties -> Android
+- Under Library section click Add -> AppValidator
+- Click Ok
 
-#### Import library (Gradle, AndroidStudio)
-
-First of all import the library in your gradle file.
-```java
-compile 'com.myappfree.sdk:appvalidator:1.0.5'
-```
 
 #### Do the trick! (Java)
 
@@ -33,8 +39,3 @@ Add this line before *isIapToUnlock* method.
 ```
 
 Note: this will raise the *validated() block* every time your app is opened. Remove this line before releasing your app to the store.
-
-Instructions for other frameworks/platforms:
-- [Eclipse](eclise/README.md)
-- [Cordova/Ionic](cordova/README.md)
-- [Unity](unity/README.md)
