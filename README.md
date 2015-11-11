@@ -73,6 +73,7 @@ Use this line to show your custom message about unlocked content. This is mandat
 CordovaAppValidator.showDialog("App is validated");
 ```
 
+##### Testing
 In order to enable/disable DEBUG mode run:
 ``` javascript
 CordovaAppValidator.enableDebug(); // enable debug
@@ -88,6 +89,7 @@ Edit validated block on line 41 to perform custom actions and run function: isIa
 ##### Show custom message
 Use function showDialog() inside appvalidator.cs to show a custom message. This is mandatory to be approved from myAppFree Team.
 
+##### Testing
 In order to enable/disable DEBUG mode use function enableDebug() and disableDebug() inside appvalidator.cs:
 
 Note: this will raise the *validated() block* every time your app is opened. Remove this line before releasing your app to the store.
