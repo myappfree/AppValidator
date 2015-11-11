@@ -1,0 +1,186 @@
+apply plugin: 'com.android.library'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+group = 'com.myappfree.sdk'
+version = '1.0.5'
+
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 5
+        targetSdkVersion 23
+        versionCode 5
+        versionName "1.0.5"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+def siteUrl = 'https://github.com/bintray/bintray-examples'
+def gitUrl = 'https://github.com/bintray/bintray-examples.git'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+
+
+    configurations = ['archives'] //When uploading configuration files
+    pkg {
+        repo = 'maven'
+        name = project.name
+        desc = 'myappfree SDK'
+        websiteUrl = siteUrl
+        issueTrackerUrl = 'https://github.com/bintray/bintray-examples/issues'
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
+        labels = ['aar', 'android', 'myappfree']
+        publicDownloadNumbers = true
+        publish = true
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'myappfree SDK'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'myappfree'
+                        name 'Riccardo Fuzzi'
+                        email 'riccardo@myappfree.it'
+                    }
+                }
+                scm {
+                    connection 'https://github.com/bintray/bintray-examples.git'
+                    developerConnection 'https://github.com/bintray/bintray-examples.git'
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
+}
+
+
+// ADDED BY MARCO NALON
+task cleanManifestEclipseLibrary(type: Delete){
+    delete '../eclipse/AndroidManifest.xml'
+}
+
+task copyManifestEclipseLibrary(type: Copy, dependsOn: cleanManifestEclipseLibrary) {
+    from 'src/main'
+    into '../eclipse'
+    include 'AndroidManifest.xml'
+    outputs.upToDateWhen { false }
+}
+
+task cleanResEclipseLibrary(type: Delete) {
+    delete "../eclipse/res"
+}
+
+task copyResEclipseLibrary(type: Copy, dependsOn: cleanResEclipseLibrary) {
+    from 'src/main/res'
+    into '../eclipse/res'
+    outputs.upToDateWhen { false }
+}
+
+task cleanSrcEclipseLibrary(type: Delete) {
+    delete "../eclipse/src"
+}
+
+task copySrcEclipseLibrary(type: Copy, dependsOn: cleanSrcEclipseLibrary) {
+    from 'src/main/java'
+    into '../eclipse/src'
+    outputs.upToDateWhen { false }
+}
+
+task copyEclipseLibrary(dependsOn: [
+        'copyManifestEclipseLibrary',
+        'copyResEclipseLibrary',
+        'copySrcEclipseLibrary'])
+
+
+task copyUnityAsset(type: Copy) {
+    from('build/outputs/aar/')
+    into('../unity/unityproject/Assets/Plugins/Android/')
+    include(project.name + '-release.aar')
+    outputs.upToDateWhen { false }
+}
+
+task copyCordovaAppValidatorSrc(type: Copy) {
+    from('src/main/java/com/myappfree/appvalidator')
+    into('../cordova/src/android')
+    include('AppValidator.java')
+    outputs.upToDateWhen { false }
+}
+
+task copyCordovaAppValidatorRes(type: Copy) {
+    from('src/main/res')
+    into('../cordova/src/android/res')
+    outputs.upToDateWhen { false }
+}

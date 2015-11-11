@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="com.myappfree.appvalidator"
+    version="0.1.5">
+
+    <name>AppValidator</name>
+    <description>MyAppFree AppValidator Cordova Plugin</description>
+
+    <engines>
+        <engine name="cordova" version=">=3.6.0" />
+    </engines>
+
+    <js-module src="www/CordovaAppValidator.js" name="CordovaAppValidator">
+        <clobbers target="CordovaAppValidator" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CordovaAppValidator">
+                <param name="android-package" value="com.myappfree.appvalidator.CordovaAppValidator" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/AppValidator.java" target-dir="src/com/myappfree/appvalidator/AppValidator.java" />
+        <source-file src="src/android/CordovaAppValidator.java" target-dir="src/com/myappfree/appvalidator/CordovaAppValidator.java" />
+
+        <resource-file src="src/android/res/drawable/buttonshadow.png" target="res/drawable/buttonshadow.png" />
+        <resource-file src="src/android/res/drawable/firmatrasp.png" target="res/drawable/firmatrasp.png" />
+        <resource-file src="src/android/res/layout/dialog.xml" target="res/layout/dialog.xml" />
+
+    </platform>
+
+</plugin>
