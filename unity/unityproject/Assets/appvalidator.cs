@@ -41,6 +41,7 @@ public class appvalidator : MonoBehaviour
         void validated()
         {
             // WRITE YORU VALIDATED CODE HERE
+	    // REMEMBER IT!
 
         }
     }
