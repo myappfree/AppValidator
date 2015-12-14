@@ -1,3 +1,6 @@
+#### Video Tutorial
+http://youtu.be/2q54HFI27Aw
+
 #### Import library (Unity)
 - Download this repository
 - copy the directory under AppValidator/unity/unityproject in your unity project
