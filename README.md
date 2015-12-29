@@ -2,7 +2,7 @@
 
 #### Import library (Gradle, AndroidStudio)
 
-First of all import the library in your gradle file.
+First of all import the library in your gradle file. Use jCenter() repository.
 ```java
 compile 'com.myappfree.sdk:appvalidator:1.0.5'
 ```
@@ -10,6 +10,7 @@ compile 'com.myappfree.sdk:appvalidator:1.0.5'
 #### Do the trick! (Java)
 
 Add this code to your MainActivity and add in the *validated() block* your logic to unlock your content.
+Note that this code will be raised only the first time that the content will be unlocked. 
 ```java
  AppValidator.isIapToUnlock(this, new AppValidator.OnAppValidatorListener() {
             @Override
